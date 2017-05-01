@@ -48,25 +48,35 @@ ROOT_URLCONF = 'tests.urls'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-import dj_database_url
+# import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config() or {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db{}{}.sqlite3'.format(*django.VERSION[:2])),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'viewflow_dev',
+        'USER': 'viewflow',
+        'PASSWORD': 'qwe123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'TEST': {
+            'NAME': 'viewflow_test',
+            'CREATE_DB': True,
+            'USER': 'django',  # Not used with sqlite3.
+            'PASSWORD': 'qwe123',
+        },
     }
 }
 
 
-class DisableMigrations(object):
+# class DisableMigrations(object):
+#
+#     def __contains__(self, item):
+#         return True
+#
+#     def __getitem__(self, item):
+#         return "notmigrations"
 
-    def __contains__(self, item):
-        return True
-
-    def __getitem__(self, item):
-        return "notmigrations"
-
-MIGRATION_MODULES = DisableMigrations()
+# MIGRATION_MODULES = DisableMigrations()
 
 
 TEMPLATES = [

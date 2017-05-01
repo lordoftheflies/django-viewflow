@@ -163,7 +163,8 @@ class FlowMetaClass(type):
         return new_class
 
 
-class Flow(object, metaclass=FlowMetaClass):
+class Flow(object):
+    __metaclass__ = FlowMetaClass
     """
     Base class for flow definition::
 

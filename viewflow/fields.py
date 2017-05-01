@@ -89,7 +89,8 @@ def _make_contrib(superclass, func=None):
     return contribute_to_class
 
 
-class FlowReferenceField(models.CharField, metaclass=_SubfieldBase):
+class FlowReferenceField(models.CharField):
+    __metaclass__ = _SubfieldBase
     """Flow class."""
 
     description = """Flow class reference field,
@@ -125,7 +126,8 @@ class FlowReferenceField(models.CharField, metaclass=_SubfieldBase):
         return self.get_prep_value(value)
 
 
-class TaskReferenceField(models.CharField, metaclass=_SubfieldBase):
+class TaskReferenceField(models.CharField):
+    __metaclass__ = _SubfieldBase
     """Flow node instance."""
 
     def __init__(self, *args, **kwargs):  # noqa D102
@@ -149,7 +151,8 @@ class TaskReferenceField(models.CharField, metaclass=_SubfieldBase):
         return self.get_prep_value(value)
 
 
-class TokenField(models.CharField, metaclass=_SubfieldBase):
+class TokenField(models.CharField):
+    __metaclass__ = _SubfieldBase
     """Wrapper for `viewflow.token.Token` around string values."""
 
     def __init__(self, *args, **kwargs):  # noqa D102
