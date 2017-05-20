@@ -5,9 +5,9 @@ from setuptools import setup
 
 setup(
     name='django-viewflow',
-    version='0.12.2',
-    author='Mikhail Podgurskiy',
-    author_email='kmmbvnr@gmail.com',
+    version='1.0.0',
+    author='lordoftheflies',
+    author_email='laszlo.hegedus@cherubits.hu',
     description='Reusable workflow library for django',
     long_description=open('README.rst').read(),
     license='AGPLv3',
@@ -20,7 +20,7 @@ setup(
         'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     install_requires=[
