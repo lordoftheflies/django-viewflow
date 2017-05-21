@@ -13,3 +13,4 @@ tests/local_settings.py
 
 .idea
 env
+env3
