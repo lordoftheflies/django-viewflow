@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.module_loading import import_string
-from six import with_metaclass
+from future.utils import with_metaclass
 
 from .compat import get_app_package, get_containing_app_data
 from .exceptions import FlowRuntimeError
@@ -90,7 +90,7 @@ def _make_contrib(superclass, func=None):
     return contribute_to_class
 
 
-class FlowReferenceField(with_metaclass(models.CharField, _SubfieldBase)):
+class FlowReferenceField(with_metaclass(_SubfieldBase, models.CharField)):
     """Flow class."""
 
     description = """Flow class reference field,
@@ -126,7 +126,7 @@ class FlowReferenceField(with_metaclass(models.CharField, _SubfieldBase)):
         return self.get_prep_value(value)
 
 
-class TaskReferenceField(with_metaclass(models.CharField, _SubfieldBase)):
+class TaskReferenceField(with_metaclass(_SubfieldBase, models.CharField)):
     """Flow node instance."""
 
     def __init__(self, *args, **kwargs):  # noqa D102
@@ -150,7 +150,7 @@ class TaskReferenceField(with_metaclass(models.CharField, _SubfieldBase)):
         return self.get_prep_value(value)
 
 
-class TokenField(with_metaclass(models.CharField, _SubfieldBase)):
+class TokenField(with_metaclass(_SubfieldBase, models.CharField)):
     """Wrapper for `viewflow.token.Token` around string values."""
 
     def __init__(self, *args, **kwargs):  # noqa D102
